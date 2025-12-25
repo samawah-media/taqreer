@@ -7,12 +7,12 @@ const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder');
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-        const { name, email, whatsapp, job, city } = body;
+        const { name, email, whatsapp, job, city, country } = body;
 
         // 1. Save to Supabase
         const { error: dbError } = await supabase
             .from('leads')
-            .insert([{ name, email, whatsapp, job, city, created_at: new Date() }]);
+            .insert([{ name, email, whatsapp, job, city, country, created_at: new Date() }]);
 
         if (dbError) throw dbError;
 

@@ -14,7 +14,8 @@ function LandingContent() {
     email: '',
     whatsapp: '',
     job: '',
-    city: ''
+    city: '',
+    country: 'المملكة العربية السعودية'
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -194,6 +195,54 @@ function LandingContent() {
         </div>
       </section>
 
+      {/* Inside the Report Gallery */}
+      <section className="py-24 px-6 bg-gray-50/50">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <span className="bg-brand-red/10 text-brand-red px-4 py-2 rounded-full text-sm font-bold mb-4 inline-block">محتوى حصري</span>
+            <h2 className="text-4xl lg:text-5xl font-black mb-6">نظرة خاطفة من "داخل" التقرير</h2>
+            <p className="text-xl text-gray-500 max-w-2xl mx-auto">
+              هذا ليس مجرد مقال، بل خارطة طريق استراتيجية مدعمة بالأرقام والنماذج التطبيقية.
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="group">
+              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl mb-6 bg-brand-navy">
+                <Image src="/report-cover.jpg" alt="Framework" fill className="object-cover opacity-80 group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-transparent to-transparent opacity-60"></div>
+                <div className="absolute bottom-6 right-6 left-6">
+                  <div className="text-brand-red font-bold text-xs mb-2">PAGE 12</div>
+                  <h4 className="text-white font-bold leading-tight">معادلة تحويل "المصاريف" إلى "أصول" تقنية</h4>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="group">
+              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl mb-6 bg-brand-navy">
+                <Image src="/chart-zain.png" alt="Zain vs MBC Case Study" fill className="object-cover opacity-80 group-hover:scale-110 transition-transform duration-700" />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-transparent to-transparent opacity-60"></div>
+                <div className="absolute bottom-6 right-6 left-6">
+                  <div className="text-brand-red font-bold text-xs mb-2">PAGE 28</div>
+                  <h4 className="text-white font-bold leading-tight">دراسة حالة: مواجهة Zain vs MBC في العقل العربي</h4>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="group">
+              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl mb-6 bg-brand-navy">
+                <Image src="/campaign-winner.jpg" alt="Roadmap" fill className="object-cover opacity-80 group-hover:scale-110 transition-transform duration-700 blur-[2px] group-hover:blur-0" />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-transparent to-transparent opacity-60"></div>
+                <div className="absolute bottom-6 right-6 left-6">
+                  <div className="text-brand-red font-bold text-xs mb-2">PAGE 45</div>
+                  <h4 className="text-white font-bold leading-tight">خارطة "Disney" للاستدامة الإعلامية (سماوة 2025)</h4>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
       {/* Form Section */}
       <section id="download" className="py-20 px-6 bg-white">
         <div className="max-w-3xl mx-auto">
@@ -265,13 +314,13 @@ function LandingContent() {
 
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-gray-700 px-2">رقم الواتساب</label>
+                    <label className="text-sm font-bold text-gray-700 px-2">رقم الواتساب (مع مفتاح الدولة)</label>
                     <div className="relative">
                       <input
                         required
                         type="tel"
-                        placeholder="05xxxxxxxx"
-                        className="w-full bg-white border border-gray-200 px-6 py-4 rounded-2xl focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none transition-all pr-12 text-left"
+                        placeholder="+966 5x xxx xxxx"
+                        className="w-full bg-white border border-gray-200 px-6 py-4 rounded-2xl focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none transition-all pr-12 text-left dir-ltr"
                         onChange={(e) => setFormData({ ...formData, whatsapp: e.target.value })}
                       />
                       <div className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400">
@@ -280,12 +329,26 @@ function LandingContent() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-gray-700 px-2">المدينة (بالمملكة)</label>
+                    <label className="text-sm font-bold text-gray-700 px-2">الدولة</label>
                     <div className="relative">
                       <input
                         required
                         type="text"
-                        placeholder="الرياض / جدة"
+                        placeholder="السعودية، مصر، الإمارات..."
+                        className="w-full bg-white border border-gray-200 px-6 py-4 rounded-2xl focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none transition-all pr-12"
+                        defaultValue={formData.country}
+                        onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                      />
+                      <MapPin className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                    </div>
+                  </div>
+                  <div className="space-y-2">
+                    <label className="text-sm font-bold text-gray-700 px-2">المدينة</label>
+                    <div className="relative">
+                      <input
+                        required
+                        type="text"
+                        placeholder="الرياض / القاهرة / دبي"
                         className="w-full bg-white border border-gray-200 px-6 py-4 rounded-2xl focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none transition-all pr-12"
                         onChange={(e) => setFormData({ ...formData, city: e.target.value })}
                       />
