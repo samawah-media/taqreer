@@ -173,28 +173,32 @@ function LandingContent() {
               </div>
             </motion.div>
 
-            {/* Video Side */}
+
+            {/* Image Side */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative order-1 lg:order-2"
+              className="relative order-1 lg:order-2 group"
             >
-              <div className="relative rounded-[3rem] overflow-hidden border-8 border-white/10 shadow-2xl bg-black">
-                <video
-                  autoPlay
-                  loop
-                  muted
-                  playsInline
-                  className="w-full h-full object-cover select-none"
-                  poster="/report-cover-2025.png"
-                >
-                  <source src="/video.mp4" type="video/mp4" />
-                  متصفحك لا يدعم تشغيل الفيديو.
-                </video>
+              <div className="relative rounded-[3rem] overflow-hidden border-8 border-white/10 shadow-2xl bg-black aspect-[4/3]">
+                <Image
+                  src="/case-study-coke.png"
+                  alt="Coca-Cola Case Study"
+                  fill
+                  className="object-cover group-hover:scale-105 transition-transform duration-700"
+                />
 
                 {/* Overlay Gradient for nicer blend */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+                {/* Interactive Download Button on Image */}
+                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 backdrop-blur-sm">
+                  <a href="#download" className="bg-white/20 backdrop-blur-md border border-white/40 text-white px-8 py-3 rounded-full font-bold hover:bg-brand-red hover:border-brand-red transition-all flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 duration-300">
+                    <Download size={20} />
+                    تحميل الدراسة كاملة
+                  </a>
+                </div>
               </div>
 
               {/* Floating Badge */}
@@ -212,6 +216,9 @@ function LandingContent() {
       <section className="py-24 bg-gray-50 px-6 overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
+            <span className="bg-brand-navy text-white px-4 py-1.5 rounded-full text-xs font-bold mb-4 inline-block tracking-wide">
+              محتوى حصري من التقرير 🔒
+            </span>
             <h2 className="text-4xl font-black mb-4 underline decoration-brand-red decoration-4 transition-all">خارطة التحول الاستراتيجي</h2>
             <p className="text-gray-500">خارطة طريق مالية وإدارية لتحويل الإعلام إلى قيمة ثابتة</p>
           </div>
