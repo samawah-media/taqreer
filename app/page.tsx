@@ -102,7 +102,7 @@ function LandingContent() {
             transition={{ duration: 0.8 }}
             className="relative h-[600px] rounded-3xl overflow-hidden shadow-2xl"
           >
-            <Image src="/report-cover-2025.jpg" alt="Samawah Report Cover" fill className="object-cover" />
+            <Image src="/report-cover-2025.png" alt="Samawah Authentic Report Cover 2025" fill className="object-cover" />
           </motion.div>
         </div>
       </section>
