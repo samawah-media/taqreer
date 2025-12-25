@@ -22,7 +22,7 @@ export const authOptions = {
         }),
     ],
     callbacks: {
-        async signIn({ user, account, profile }) {
+        async signIn({ user, account, profile }: any) {
             // Here we will trigger the Lead Capture logic (saving to Supabase)
             // and then allow the landing page to trigger the download.
             return true;

@@ -217,7 +217,7 @@ function LandingContent() {
 
               {session && (
                 <div className="bg-blue-50 border border-blue-100 p-6 rounded-2xl text-center">
-                  <p className="text-blue-800 font-bold mb-4">أهلاً ${session.user?.name}، أنت جاهز للتحميل!</p>
+                  <p className="text-blue-800 font-bold mb-4">أهلاً {session.user?.name}، أنت جاهز للتحميل!</p>
                   <button
                     onClick={handleSubmit}
                     className="w-full bg-brand-red text-white py-5 rounded-2xl font-bold text-xl hover:bg-opacity-95 transition-all shadow-lg flex items-center justify-center gap-3"
