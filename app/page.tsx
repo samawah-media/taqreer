@@ -51,7 +51,7 @@ function LandingContent() {
   };
 
   return (
-    <div className="min-h-screen bg-white text-brand-navy selection:bg-brand-red selection:text-white">
+    <div className="min-h-screen bg-grid-pattern text-brand-navy selection:bg-brand-red selection:text-white">
       {/* Navigation */}
       <nav className="fixed top-0 w-full z-50 bg-white/80 backdrop-blur-md border-b border-gray-100">
         <div className="max-w-7xl mx-auto px-6 h-20 flex items-center justify-between">
@@ -59,10 +59,7 @@ function LandingContent() {
             <Image src="/samawah-logo.png" alt="Samawah Logo" fill className="object-contain" />
           </div>
           <div className="hidden md:flex items-center gap-6">
-            <a href="https://samawah.store/" target="_blank" className="text-gray-600 hover:text-brand-red font-bold transition-colors">المتجر</a>
-            <a href="https://wa.me/966537276942" target="_blank" className="bg-brand-navy text-white px-6 py-2.5 rounded-full font-bold hover:bg-opacity-90 transition-all">
-              تواصل معنا
-            </a>
+            <span className="text-gray-400 text-sm font-medium">سماوة للإنتاج المرئي والمسموع</span>
           </div>
         </div>
       </nav>
@@ -107,11 +104,115 @@ function LandingContent() {
         </div>
       </section>
 
-      {/* Bento Grid Concept - The Deep Dive */}
-      <section className="py-20 bg-gray-50 px-6 overflow-hidden">
+      {/* Strategic Questions Section */}
+      <section className="py-24 px-6 bg-white relative overflow-hidden">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-black mb-4 underline decoration-brand-red decoration-4 transition-all">وش بتلقى داخل التقرير؟</h2>
+            <span className="bg-brand-red/10 text-brand-red px-4 py-2 rounded-full text-sm font-bold mb-4 inline-block">تساؤلات استراتيجية</span>
+            <h2 className="text-4xl lg:text-5xl font-black mb-6">أسئلة تصنع الفارق في نمو منظمتك</h2>
+            <p className="text-xl text-gray-500 max-w-2xl mx-auto">
+              الإجابة على هذه التساؤلات هي ما يفرق بين الشركات التي "تصرف" والشركات التي "تستثمر".
+            </p>
+          </div>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {[
+              { src: '/question-1.jpg', q: 'السؤال الأول' },
+              { src: '/question-2.jpg', q: 'السؤال الثاني' },
+              { src: '/question-3.jpg', q: 'السؤال الثالث' }
+            ].map((item, idx) => (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: idx * 0.1 }}
+                whileHover={{ y: -15, scale: 1.02 }}
+                className="relative aspect-[3/4] rounded-[32px] overflow-hidden shadow-2xl border-4 border-white group cursor-pointer"
+              >
+                <Image
+                  src={item.src}
+                  alt={item.q}
+                  fill
+                  className="object-cover transition-transform duration-700 group-hover:scale-110"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+
+      {/* Coca-Cola Case Study - Video Section */}
+      <section className="py-24 bg-brand-navy relative overflow-hidden">
+        <div className="absolute inset-0 bg-[url('/noise.png')] opacity-5 mix-blend-overlay"></div>
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-center">
+            {/* Text Side */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="text-white order-2 lg:order-1"
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <Image src="/report-cover-2025.png" alt="Logo" width={60} height={60} className="w-16 h-auto drop-shadow-2xl" />
+                <span className="text-brand-red font-bold tracking-widest uppercase">2006</span>
+              </div>
+              <h2 className="text-3xl lg:text-5xl font-black leading-tight mb-8">
+                كيف تروي قصة الشركة وتعزز ارتباطها العاطفي؟
+              </h2>
+              <div className="space-y-6 text-gray-300 text-lg leading-relaxed">
+                <p>
+                  واجهت كوكاكولا تحديًا مألوفًا لكثير من العلامات العالمية: كيف يمكن للإعلان أن يتجاوز دوره التقليدي كحملة قصيرة المدى، ليصبح أداة تروي قصة الشركة وتعزز ارتباطها العاطفي مع الجمهور؟
+                </p>
+                <p className="border-r-4 border-brand-red pr-6 italic">
+                  "الإجابة جاءت من خلال مشروع مصنع السعادة (Happiness Factory)، الذي بدأ كإعلان مدته ستين ثانية وانتهى كنموذج متكامل لإدارة المخرجات الإعلامية كأصل تراكمي."
+                </p>
+              </div>
+            </motion.div>
+
+            {/* Video Side */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              className="relative order-1 lg:order-2"
+            >
+              <div className="relative rounded-[3rem] overflow-hidden border-8 border-white/10 shadow-2xl bg-black">
+                <video
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  className="w-full h-full object-cover select-none"
+                  poster="/report-cover-2025.png"
+                >
+                  <source src="/video.mp4" type="video/mp4" />
+                  متصفحك لا يدعم تشغيل الفيديو.
+                </video>
+
+                {/* Overlay Gradient for nicer blend */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent pointer-events-none"></div>
+              </div>
+
+              {/* Floating Badge */}
+              <div className="absolute -bottom-10 -right-10 bg-white text-brand-navy p-6 rounded-3xl shadow-xl z-20 hidden lg:block">
+                <p className="font-bold text-lg text-center leading-tight">
+                  نموذج<br /><span className="text-brand-red">Happiness Factory</span>
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Bento Grid Concept - The Deep Dive */}
+      <section className="py-24 bg-gray-50 px-6 overflow-hidden">
+        <div className="max-w-7xl mx-auto">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl font-black mb-4 underline decoration-brand-red decoration-4 transition-all">خارطة التحول الاستراتيجي</h2>
             <p className="text-gray-500">خارطة طريق مالية وإدارية لتحويل الإعلام إلى قيمة ثابتة</p>
           </div>
 
@@ -174,18 +275,22 @@ function LandingContent() {
         <div className="max-w-7xl mx-auto">
           <div className="bg-brand-navy rounded-[40px] p-12 lg:p-20 text-white relative overflow-hidden">
             <h2 className="text-4xl font-black mb-12 text-center">هل هذا التقرير لك؟</h2>
-            <div className="grid md:grid-cols-3 gap-8 relative z-10">
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative z-10">
               <div className="bg-white/5 p-8 rounded-3xl border border-white/10 hover:bg-white/10 transition-all group">
                 <div className="text-brand-red font-bold mb-4 group-hover:scale-110 transition-transform">CEO</div>
-                <p className="text-gray-300">تبي تحول قسم التسويق من جهة "تستنزف الموارد" لمركز "أصول" يرفع قيمة الشركة السوقية.</p>
+                <p className="text-gray-300 text-sm">تحويل قسم التسويق من جهة "تستنزف الموارد" لمركز "أصول" يرفع قيمة الشركة السوقية.</p>
               </div>
               <div className="bg-white/5 p-8 rounded-3xl border border-white/10 hover:bg-white/10 transition-all group">
                 <div className="text-brand-red font-bold mb-4 group-hover:scale-110 transition-transform">CMO</div>
-                <p className="text-gray-300">تبي تتكلم مع مجلس الإدارة بلغة الأرقام والاستدامة اللي يحبونها بدل لغة اللايكات.</p>
+                <p className="text-gray-300 text-sm">تتكلم مع مجلس الإدارة بلغة الأرقام والاستدامة اللي يحبونها بدل لغة اللايكات.</p>
               </div>
               <div className="bg-white/5 p-8 rounded-3xl border border-white/10 hover:bg-white/10 transition-all group">
                 <div className="text-brand-red font-bold mb-4 group-hover:scale-110 transition-transform">راعي حلال</div>
-                <p className="text-gray-300">تدور شريك استراتيجي يفهم "لغة البزنس" قبل لا يفهم "لغة التريند".</p>
+                <p className="text-gray-300 text-sm">تدور شريك استراتيجي يفهم "لغة البزنس" قبل لا يفهم "لغة التريند".</p>
+              </div>
+              <div className="bg-white/5 p-8 rounded-3xl border border-white/10 hover:bg-white/10 transition-all group">
+                <div className="text-brand-red font-bold mb-4 group-hover:scale-110 transition-transform">مسوّق ذكي</div>
+                <p className="text-gray-300 text-sm">حمّل التقرير وأرسله لمديرك.. خله يشوف إنك مهتم بمصلحة البزنس مو بس "صرف ميزانية".</p>
               </div>
             </div>
             {/* Decors */}
