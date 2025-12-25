@@ -174,38 +174,25 @@ function LandingContent() {
             </motion.div>
 
 
-            {/* Image Side */}
+            {/* Video Side - YouTube Embed */}
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
-              className="relative order-1 lg:order-2 group"
+              className="relative order-1 lg:order-2"
             >
-              <div className="relative rounded-[3rem] overflow-hidden border-8 border-white/10 shadow-2xl bg-black aspect-[4/3]">
-                <Image
-                  src="/case-study-coke.png"
-                  alt="Coca-Cola Case Study"
-                  fill
-                  className="object-cover group-hover:scale-105 transition-transform duration-700"
-                />
+              <div className="relative rounded-[3rem] overflow-hidden border-8 border-white/10 shadow-2xl bg-black aspect-video group">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/7W33HRc1A6c?rel=0&controls=1&modestbranding=1"
+                  title="Coca-Cola Happiness Factory"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
 
-                {/* Overlay Gradient for nicer blend */}
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
-
-                {/* Interactive Download Button on Image */}
-                <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/30 backdrop-blur-sm">
-                  <a href="#download" className="bg-white/20 backdrop-blur-md border border-white/40 text-white px-8 py-3 rounded-full font-bold hover:bg-brand-red hover:border-brand-red transition-all flex items-center gap-2 transform translate-y-4 group-hover:translate-y-0 duration-300">
-                    <Download size={20} />
-                    تحميل الدراسة كاملة
-                  </a>
-                </div>
-              </div>
-
-              {/* Floating Badge */}
-              <div className="absolute -bottom-10 -right-10 bg-white text-brand-navy p-6 rounded-3xl shadow-xl z-20 hidden lg:block">
-                <p className="font-bold text-lg text-center leading-tight">
-                  نموذج<br /><span className="text-brand-red">Happiness Factory</span>
-                </p>
+                {/* Overlay Ring */}
+                <div className="absolute inset-0 border-4 border-white/5 rounded-[2.5rem] pointer-events-none"></div>
               </div>
             </motion.div>
           </div>
@@ -303,54 +290,6 @@ function LandingContent() {
             {/* Decors */}
             <div className="absolute top-0 right-0 w-64 h-64 bg-brand-red/10 blur-[100px] rounded-full"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-blue-500/10 blur-[100px] rounded-full"></div>
-          </div>
-        </div>
-      </section>
-
-      {/* Inside the Report Gallery */}
-      <section className="py-24 px-6 bg-gray-50/50">
-        <div className="max-w-7xl mx-auto">
-          <div className="text-center mb-16">
-            <span className="bg-brand-red/10 text-brand-red px-4 py-2 rounded-full text-sm font-bold mb-4 inline-block">محتوى حصري</span>
-            <h2 className="text-4xl lg:text-5xl font-black mb-6">نظرة خاطفة من "داخل" التقرير</h2>
-            <p className="text-xl text-gray-500 max-w-2xl mx-auto">
-              هذا ليس مجرد مقال، بل خارطة طريق استراتيجية مدعمة بالأرقام والنماذج التطبيقية.
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-3 gap-8">
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} className="group">
-              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl mb-6 bg-brand-navy">
-                <Image src="/report-cover.jpg" alt="Framework" fill className="object-cover opacity-80 group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-transparent to-transparent opacity-60"></div>
-                <div className="absolute bottom-6 right-6 left-6">
-                  <div className="text-brand-red font-bold text-xs mb-2">PAGE 12</div>
-                  <h4 className="text-white font-bold leading-tight">معادلة تحويل "المصاريف" إلى "أصول" تقنية</h4>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.1 }} className="group">
-              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl mb-6 bg-brand-navy">
-                <Image src="/chart-zain.png" alt="Zain vs MBC Case Study" fill className="object-cover opacity-80 group-hover:scale-110 transition-transform duration-700" />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-transparent to-transparent opacity-60"></div>
-                <div className="absolute bottom-6 right-6 left-6">
-                  <div className="text-brand-red font-bold text-xs mb-2">PAGE 28</div>
-                  <h4 className="text-white font-bold leading-tight">دراسة حالة: مواجهة Zain vs MBC في العقل العربي</h4>
-                </div>
-              </div>
-            </motion.div>
-
-            <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }} className="group">
-              <div className="relative aspect-[3/4] rounded-3xl overflow-hidden shadow-2xl mb-6 bg-brand-navy">
-                <Image src="/campaign-winner.jpg" alt="Roadmap" fill className="object-cover opacity-80 group-hover:scale-110 transition-transform duration-700 blur-[2px] group-hover:blur-0" />
-                <div className="absolute inset-0 bg-gradient-to-t from-brand-navy via-transparent to-transparent opacity-60"></div>
-                <div className="absolute bottom-6 right-6 left-6">
-                  <div className="text-brand-red font-bold text-xs mb-2">PAGE 45</div>
-                  <h4 className="text-white font-bold leading-tight">خارطة "Disney" للاستدامة الإعلامية (سماوة 2025)</h4>
-                </div>
-              </div>
-            </motion.div>
           </div>
         </div>
       </section>
