@@ -3,19 +3,15 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion } from 'framer-motion';
-import { Download, CheckCircle2, Building2, Briefcase, MapPin, Percent, TrendingUp, Users } from 'lucide-react';
-import { signIn, useSession } from "next-auth/react";
-import { SessionProvider } from "next-auth/react";
+import { Download, CheckCircle2, Building2, Briefcase, Percent, TrendingUp, Users } from 'lucide-react';
+
 
 function LandingContent() {
-  const { data: session } = useSession();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     whatsapp: '',
-    job: '',
-    city: '',
-    country: 'المملكة العربية السعودية'
+    job: ''
   });
 
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -304,35 +300,6 @@ function LandingContent() {
 
           {!isSuccess ? (
             <div className="space-y-8">
-              {/* LinkedIn One-Click */}
-              {!session && (
-                <button
-                  onClick={() => signIn('linkedin')}
-                  className="w-full bg-[#0077b5] text-white py-5 rounded-2xl font-bold text-xl hover:bg-opacity-95 transition-all shadow-lg flex items-center justify-center gap-3"
-                >
-                  <svg viewBox="0 0 24 24" width="24" height="24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" /></svg>
-                  التحميل بضغطة واحدة عبر LinkedIn
-                </button>
-              )}
-
-              {session && (
-                <div className="bg-blue-50 border border-blue-100 p-6 rounded-2xl text-center">
-                  <p className="text-blue-800 font-bold mb-4">أهلاً {session.user?.name}، أنت جاهز للتحميل!</p>
-                  <button
-                    onClick={handleSubmit}
-                    className="w-full bg-brand-red text-white py-5 rounded-2xl font-bold text-xl hover:bg-opacity-95 transition-all shadow-lg flex items-center justify-center gap-3"
-                  >
-                    حمّل التقرير الآن <Download size={24} />
-                  </button>
-                </div>
-              )}
-
-              <div className="relative flex items-center py-4">
-                <div className="flex-grow border-t border-gray-200"></div>
-                <span className="flex-shrink mx-4 text-gray-400 text-sm font-bold">أو يدوياً عبر النموذج</span>
-                <div className="flex-grow border-t border-gray-200"></div>
-              </div>
-
               <form onSubmit={handleSubmit} className="space-y-6 bg-gray-50 p-10 rounded-[32px] border border-gray-100 shadow-xl">
                 <div className="grid md:grid-cols-2 gap-6">
                   <div className="space-y-2">
@@ -380,30 +347,16 @@ function LandingContent() {
                     </div>
                   </div>
                   <div className="space-y-2">
-                    <label className="text-sm font-bold text-gray-700 px-2">الدولة</label>
+                    <label className="text-sm font-bold text-gray-700 px-2">المسمى الوظيفي</label>
                     <div className="relative">
                       <input
                         required
                         type="text"
-                        placeholder="السعودية، مصر، الإمارات..."
+                        placeholder="مدير تنفيذي / مدير تسويق"
                         className="w-full bg-white border border-gray-200 px-6 py-4 rounded-2xl focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none transition-all pr-12"
-                        defaultValue={formData.country}
-                        onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+                        onChange={(e) => setFormData({ ...formData, job: e.target.value })}
                       />
-                      <MapPin className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
-                    </div>
-                  </div>
-                  <div className="space-y-2">
-                    <label className="text-sm font-bold text-gray-700 px-2">المدينة</label>
-                    <div className="relative">
-                      <input
-                        required
-                        type="text"
-                        placeholder="الرياض / القاهرة / دبي"
-                        className="w-full bg-white border border-gray-200 px-6 py-4 rounded-2xl focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none transition-all pr-12"
-                        onChange={(e) => setFormData({ ...formData, city: e.target.value })}
-                      />
-                      <MapPin className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
+                      <Briefcase className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400" size={20} />
                     </div>
                   </div>
                 </div>
@@ -482,9 +435,7 @@ function LandingContent() {
 
 export default function LandingPage() {
   return (
-    <SessionProvider>
-      <LandingContent />
-    </SessionProvider>
+    <LandingContent />
   );
 }
 
