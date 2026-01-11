@@ -110,9 +110,21 @@ export function DownloadForm() {
                         <div className="bg-green-500 w-20 h-20 rounded-full flex items-center justify-center text-white mx-auto mb-6 shadow-xl shadow-green-200">
                             <CheckCircle2 size={40} />
                         </div>
-                        <h3 className="text-3xl font-black text-green-900 mb-4">تم الإرسال بنجاح!</h3>
-                        <p className="text-green-800 mb-8">رابط التقرير في طريقه لإيميلك الآن. استمتع برحلة التحول.</p>
-                        <button onClick={() => setIsSuccess(false)} className="text-green-700 font-bold hover:underline">تحميل نسخة ثانية؟</button>
+                        <h3 className="text-3xl font-black text-green-900 mb-4">تم التسجيل بنجاح!</h3>
+                        <p className="text-green-800 mb-8">إذا لم يبدأ التحميل تلقائياً، اضغط على الزر أدناه:</p>
+
+                        <a
+                            href="/samawah-report-2025.pdf"
+                            download="تقرير-سماوة-للأصول-الإعلامية.pdf"
+                            className="bg-brand-red text-white px-8 py-4 rounded-xl font-bold text-lg inline-flex items-center gap-2 hover:bg-opacity-90 transition-all shadow-lg mb-6"
+                        >
+                            <Download size={24} />
+                            تحميل التقرير الآن (PDF)
+                        </a>
+
+                        <div className="block">
+                            <button onClick={() => setIsSuccess(false)} className="text-gray-400 text-sm hover:underline">تسجيل بريد آخر؟</button>
+                        </div>
                     </motion.div>
                 )}
             </div>
