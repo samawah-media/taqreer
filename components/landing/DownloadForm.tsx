@@ -12,9 +12,24 @@ export function DownloadForm() {
 
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [isSuccess, setIsSuccess] = useState(false);
+    const [emailError, setEmailError] = useState('');
+
+    // Email validation regex
+    const isValidEmail = (email: string) => {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    };
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
+        setEmailError('');
+
+        // Validate email format
+        if (!isValidEmail(formData.email)) {
+            setEmailError('الرجاء إدخال بريد إلكتروني صحيح');
+            return;
+        }
+
         setIsSubmitting(true);
 
         // 1. Trigger download IMMEDIATELY (don't wait for API)
@@ -74,11 +89,17 @@ export function DownloadForm() {
                                             required
                                             type="email"
                                             placeholder="name@company.com"
-                                            className="w-full bg-white border border-gray-200 px-6 py-4 rounded-2xl focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none transition-all pr-12 text-left"
-                                            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                                            className={`w-full bg-white border px-6 py-4 rounded-2xl focus:ring-2 focus:ring-brand-red focus:border-transparent outline-none transition-all pr-12 text-left ${emailError ? 'border-red-500' : 'border-gray-200'}`}
+                                            onChange={(e) => {
+                                                setFormData({ ...formData, email: e.target.value });
+                                                setEmailError('');
+                                            }}
                                         />
                                         <Download className="absolute right-4 top-1/2 -translate-y-1/2 text-gray-400 rotate-180" size={20} />
                                     </div>
+                                    {emailError && (
+                                        <p className="text-red-500 text-sm px-2">{emailError}</p>
+                                    )}
                                 </div>
                             </div>
 
