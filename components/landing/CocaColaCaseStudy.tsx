@@ -44,7 +44,7 @@ export function CocaColaCaseStudy() {
                         <div className="relative rounded-[3rem] overflow-hidden border-8 border-white/10 shadow-2xl bg-black aspect-video group">
                             <iframe
                                 className="w-full h-full"
-                                src="https://www.youtube.com/embed/7W33HRc1A6c?rel=0&controls=1&modestbranding=1"
+                                src="https://www.youtube.com/embed/NwCn-D5xFdc?rel=0&controls=1&modestbranding=1"
                                 title="Coca-Cola Happiness Factory"
                                 frameBorder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
