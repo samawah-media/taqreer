@@ -17,28 +17,28 @@ export function DownloadForm() {
         e.preventDefault();
         setIsSubmitting(true);
 
+        // 1. Trigger download IMMEDIATELY (don't wait for API)
+        const link = document.createElement('a');
+        link.href = '/samawah-report-2025.pdf';
+        link.download = 'تقرير-سماوة-للأصول-الإعلامية.pdf';
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+
+        // 2. Show success state immediately
+        setIsSuccess(true);
+        setIsSubmitting(false);
+
+        // 3. Send data to API in background (non-blocking)
         try {
-            const response = await fetch('/api/lead', {
+            await fetch('/api/lead', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify(formData)
             });
-
-            if (response.ok) {
-                // Direct Download Action
-                const link = document.createElement('a');
-                link.href = '/samawah-report-2025.pdf'; // Make sure this file exists in public/
-                link.download = 'تقرير-سماوة-للأصول-الإعلامية.pdf';
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-
-                setIsSuccess(true);
-            }
+            // We don't care if it fails - user already got the PDF
         } catch (error) {
-            console.error('Submission failed', error);
-        } finally {
-            setIsSubmitting(false);
+            console.error('Background API submission failed', error);
         }
     };
 
