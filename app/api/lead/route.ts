@@ -17,10 +17,11 @@ export async function POST(request: Request) {
         if (dbError) throw dbError;
 
         // 2. Send Welcome Email via Resend
-        await resend.emails.send({
+        console.log('Attempting to send email to:', email);
+        const emailResponse = await resend.emails.send({
             from: 'Samawah <onboarding@resend.dev>', // Replace with verified domain later
             to: email,
-            subject: 'شكراً لاهتمامك بتقرير الأصول الإعلامية - سماوة',
+            subject: 'استلام التقرير: تقرير الأصول الإعلامية - سماوة',
             html: `
         <div dir="rtl" style="font-family: sans-serif;">
           <h2>أهلاً ${name}،</h2>
@@ -33,9 +34,16 @@ export async function POST(request: Request) {
       `
         });
 
+        if (emailResponse.error) {
+            console.error('Resend API Error:', emailResponse.error);
+            // We don't throw here to allow the success response for the lead, but log it.
+        } else {
+            console.log('Email sent successfully:', emailResponse.data);
+        }
+
         return NextResponse.json({ success: true });
     } catch (error: any) {
-        console.error('Lead Error:', error);
+        console.error('Lead Generation Critical Error:', error);
         return NextResponse.json({ success: false, error: error.message }, { status: 500 });
     }
 }

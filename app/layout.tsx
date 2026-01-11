@@ -14,7 +14,31 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "سماوة | تقرير الأصول الإعلامية 2025",
-  description: "تقرير استراتيجي حصري لتحويل الميزانيات التسويقية إلى أصول إعلامية مستدامة.",
+  description: "تقرير استراتيجي حصري يكشف كيف تحول ميزانيتك التسويقية من مصروفات مستنزفة إلى أصول إعلامية مستدامة ترفع قيمة شركتك.",
+  keywords: ["تسويق", "إعلام", "أصول إعلامية", "تقرير استراتيجي", "سماوة", "إنتاج مرئي", "السعودية", "2025"],
+  openGraph: {
+    title: "سماوة | تقرير الأصول الإعلامية 2025",
+    description: "هل ميزانيتك التسويقية استثمار أم استنزاف؟ حمل التقرير الاستراتيجي لعام 2025.",
+    url: "https://samawah.com.sa",
+    siteName: "سماوة للإنتاج",
+    images: [
+      {
+        url: "/report-cover-2025.png", // Ensure this image is suitable for OG
+        width: 1200,
+        height: 630,
+        alt: "تقرير سماوة 2025",
+      },
+    ],
+    locale: "ar_SA",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "سماوة | تقرير الأصول الإعلامية 2025",
+    description: "تقرير استراتيجي حصري لمدراء المستقبل.",
+    images: ["/report-cover-2025.png"],
+    creator: "@Samawah_1",
+  },
 };
 
 import { Analytics } from "@vercel/analytics/react"
