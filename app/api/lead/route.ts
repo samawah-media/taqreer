@@ -7,7 +7,7 @@ const resend = new Resend(process.env.RESEND_API_KEY || 're_placeholder');
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-        const { name, email, whatsapp, job, city, country } = body;
+        const { name, email, whatsapp = '', job = '', city = '', country = '' } = body;
 
         // 1. Save to Supabase
         const { error: dbError } = await supabase
@@ -25,8 +25,8 @@ export async function POST(request: Request) {
         <div dir="rtl" style="font-family: sans-serif;">
           <h2>أهلاً ${name}،</h2>
           <p>شكراً لثقتك في سماوة. إليك رابط التقرير الاستراتيجي الذي طلبته:</p>
-          <a href="https://samawah.store/" style="background: #f43f5e; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">تصفح التقرير الآن</a>
-          <p>ننتظر رأيك في جزئية (العدسات الثلاث). إذا كان لديك أي استفسار، يمكنك التواصل معنا مباشرة عبر الواتساب.</p>
+          <a href="${process.env.NEXT_PUBLIC_APP_URL || 'https://samawah.com.sa'}/samawah-report-2025.pdf" style="background: #f43f5e; color: white; padding: 12px 24px; text-decoration: none; border-radius: 8px; font-weight: bold;">تحميل التقرير الآن (PDF)</a>
+          <p>ننتظر رأيك في جزئية (العدسات الثلاث). إذا كان لديك أي استفسار، يمكنك التواصل معنا مباشرة.</p>
           <hr />
           <p>فريق سماوة للإنتاج</p>
         </div>
