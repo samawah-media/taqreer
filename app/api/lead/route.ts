@@ -5,12 +5,12 @@ import nodemailer from 'nodemailer';
 export async function POST(request: Request) {
     try {
         const body = await request.json();
-        const { name, email, whatsapp = '', job = '', city = '', country = '' } = body;
+        const { name, email } = body;
 
         // 1. Save to Supabase
         const { error: dbError } = await supabase
             .from('leads')
-            .insert([{ name, email, whatsapp, job, city, country, created_at: new Date() }]);
+            .insert([{ name, email, created_at: new Date() }]);
 
         if (dbError) {
             console.error('Supabase Error:', dbError);
