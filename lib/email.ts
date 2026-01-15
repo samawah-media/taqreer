@@ -48,11 +48,12 @@ export async function sendWelcomeEmail(name: string, email: string): Promise<voi
             </ul>
 
             <div style="text-align: center; margin: 40px 0;">
-              <a href="https://samawah.com.sa/samawah-report-2025.pdf" style="background: #f43f5e; color: white; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px; box-shadow: 0 4px 6px rgba(244, 63, 94, 0.2);">تحميل التقرير (PDF)</a>
+              <a href="https://samawah.com.sa/reports/" style="background: #f43f5e; color: white; padding: 16px 32px; text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 18px; box-shadow: 0 4px 6px rgba(244, 63, 94, 0.2);">استكشاف تقارير سماوة (PDF)</a>
+              <p style="font-size: 14px; color: #666; margin-top: 10px;">ستجد هذا التقرير ومجموعة واسعة من التقارير الإعلامية الأخرى بانتظارك</p>
             </div>
 
             <p style="background: #fff5f5; padding: 15px; border-radius: 8px; border-right: 4px solid #f43f5e;">
-              <strong>💡 نصيحة سريعة:</strong> ابدأ بقسم (العدسات الثلاث)، فهي المفتاح لفهم كيف يراك جمهورك، وكيف تضمن بقاءك في الذاكرة.
+              <strong>💡 نصيحة سريعة:</strong> ستجد تقرير (الأصول الإعلامية 2025) متاحاً للتحميل المباشر في الصفحة، ننصحك بالبدء بقسم (العدسات الثلاث) لفهم التميز في بيئة المحتوى.
             </p>
 
             <p>نحن في سماوة نؤمن أن المحتوى هو الأصل الأغلى لأي علامة تجارية. إذا كان لديك أي استفسار، لا تتردد في الرد على هذا الإيميل مباشرة.</p>
