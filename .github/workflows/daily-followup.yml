@@ -12,7 +12,7 @@ jobs:
     steps:
       - name: Call Follow-up API
         run: |
-          response=$(curl -s -w "\n%{http_code}" -X GET "${{ secrets.APP_URL }}/api/cron/followup" \
+          response=$(curl -s -L -w "\n%{http_code}" -X GET "${{ secrets.APP_URL }}/api/cron/followup" \
             -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
             --retry 3 \
             --retry-delay 5 \
