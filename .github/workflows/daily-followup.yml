@@ -1,0 +1,32 @@
+name: Daily Lead Follow-up
+
+on:
+  schedule:
+    # Runs at 10:00 AM Riyadh time (07:00 UTC) every day
+    - cron: '0 7 * * *' 
+  workflow_dispatch: # Allows manual triggering from GitHub
+
+jobs:
+  cron-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call Follow-up API
+        run: |
+          response=$(curl -s -w "\n%{http_code}" -X GET "${{ secrets.APP_URL }}/api/cron/followup" \
+            -H "Authorization: Bearer ${{ secrets.CRON_SECRET }}" \
+            --retry 3 \
+            --retry-delay 5 \
+            --max-time 60)
+          
+          http_code=$(echo "$response" | tail -n1)
+          body=$(echo "$response" | sed '$d')
+          
+          echo "Response Body: $body"
+          echo "HTTP Status: $http_code"
+          
+          if [ "$http_code" != "200" ]; then
+            echo "❌ API call failed with status $http_code"
+            exit 1
+          fi
+          
+          echo "✅ Follow-up job completed successfully"
