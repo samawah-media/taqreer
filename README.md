@@ -1,36 +1,53 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🚀 منظومة سماوة الرقمية (Samawah Digital Ecosystem)
 
-## Getting Started
+تم تطوير هذا المشروع ليكون منصة متكاملة لإدارة التقارير الإعلامية، مع نظام أتمتة ذكي (Automated CRM) لتعزيز التواصل مع العملاء وبناء قاعدة بيانات استراتيجية.
 
-First, run the development server:
+## 🌟 المزايا الرئيسية
+- **نظام أتمتة الرسائل (Follow-up Automation)**: إرسال إيميلات متابعة تلقائية بعد 3 أيام من التسجيل.
+- **تكامل مع Supabase**: نظام إدارة بيانات سحابي متطور لحفظ بيانات المسجلين.
+- **إرسال إيميلات احترافية**: نظام مدمج لإرسال رسائل ترحيبية فورية باستخدام Gmail SMTP.
+- **حماية البيانات**: نظام تحقق (Validation) ومنع محاولات الاختراق (XSS Protection).
+- **أيقونة هوية مخصصة**: Favicon محدث بشعار سماوة الرسمي.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+---
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🛠️ الهيكلية التقنية (Tech Stack)
+- **Frontend**: Next.js 15 (App Router)
+- **Database**: Supabase
+- **Email Service**: Nodemailer (via Gmail App Passwords)
+- **Automation**: GitHub Actions (Cron Jobs)
+- **Deployment**: Vercel
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📁 هيكلة الملفات الجديدة
+- `app/api/lead/route.ts`: معالج عملية التسجيل وإرسال الإيميل الترحيبي.
+- `app/api/cron/followup/route.ts`: معالج عملية الأتمتة والمتابعة بعد 3 أيام.
+- `lib/email.ts`: المحرك المركزي لإرسال الإيميلات (تصاميم ونصوص الإيميلات موجودة هنا).
+- `lib/validation.ts`: نظام التحقق والحماية من البيانات الضارة.
+- `.github/workflows/daily-followup.yml`: إعدادات "المؤقت" الذي يشغل الأتمتة يومياً.
 
-## Learn More
+---
 
-To learn more about Next.js, take a look at the following resources:
+## ⚙️ التكوين (Configuration)
+تعتمد المنظومة على المتغيرات البيئية التالية (يجب ضبطها في Vercel و GitHub):
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+| المتغير | الوصف |
+|---------|-------|
+| `GMAIL_USER` | بريد Gmail المستخدم للإرسال |
+| `GMAIL_PASS` | رمز التطبيق (App Password) الخاص بجوجل |
+| `CRON_SECRET` | رمز الأمان لتشغيل نظام الأتمتة |
+| `NEXT_PUBLIC_SUPABASE_URL` | رابط قاعدة بيانات Supabase |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | مفتاح الوصول لقاعدة البيانات |
+| `APP_URL` | رابط الموقع الحي (يستخدم في GitHub Actions) |
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🚀 التشغيل والصيانة
+- **لتعديل نصوص الإيميلات**: اذهب لملف `lib/email.ts`.
+- **لتعديل وقت الأتمتة**: اذهب لملف `.github/workflows/daily-followup.yml` وغير الجدول الزمني (Cron).
+- **لمراقبة الأداء**: شاهد تبويب **Actions** في GitHub لمتابعة حالة الإرسال اليومي.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**تطوير وانتاج: سماوة للإنتاج | Samawah Production**
